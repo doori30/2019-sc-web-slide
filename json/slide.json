@@ -1,0 +1,9 @@
+{
+	"slides":[
+		{"src":"../img/slide(복습)/p1.png", "desc":"배너1"},
+		{"src":"../img/slide(복습)/p2.png", "desc":"배너2"},
+		{"src":"../img/slide(복습)/p3.png", "desc":"배너3"},
+		{"src":"../img/slide(복습)/p4.png", "desc":"배너4"},
+		{"src":"../img/slide(복습)/p5.png", "desc":"배너5"}
+	]
+}
