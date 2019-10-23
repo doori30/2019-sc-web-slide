@@ -88,15 +88,15 @@ function init(){
 }
 //애니메이션
 function ani() {
-	$(".banners").stop().animate({"left": (-720 * now) + "px"
-}, 500,function(){
-			if(now == 5){
-				now = 0;
-				$(".banners").css({"left":0});
-			pagerInit();
-			btInit();
-			}
-			});
+	var aniEasy = new AniEasy({elem:".banners"});
+	aniEasy.animate({"left":(-720*now)+"px"},500,function(){
+		if(now == 5){
+			now = 0;
+			document.querySelector(".banners").style.left=0;
+		pagerInit();
+		btInit();
+		}
+	});
 		}
 //버튼정렬
 function btInit(){
