@@ -3,6 +3,7 @@ var AniEasy = (function(){
 		this.elem = obj.elem ==undefined ? ".ani-easy":obj.elem;
 		this.elem = document.querySelector(this.elem);
 		//type은 문자열로
+		this.interval;
 	}//객체의 기본 모듈값(초기화)
 	return AniEasy;
 })();
@@ -18,12 +19,13 @@ AniEasy.prototype.animate = function(css, speed, cb){
 	var pos = Number(this.cssValue.replace("px",""));
 	var tar = Number(getComputedStyle(this.elem)[this.cssName].replace("px",""));
 	//console.log(pos, tar);
-	this.interval;
-	interval = setInterval(ani,20,this);
+
+	this.interval = setInterval(ani,20,this);
 	function ani(obj){
-		if(Math.ceil(tar) == pos){
+		if(Math.ceil(Math.abs(tar)) == Math.abs(pos)){
+			//				양수 절대값을 올림 ==목표값도 양수 절대값으로 만남.
+			clearInterval(obj.interval);
 			obj.elem.style[obj.cssName] = pos+"px";
-			clearInterval(this.interval);
 			if(obj.cb)obj.cb();
 		}
 		else{
