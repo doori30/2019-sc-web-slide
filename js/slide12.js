@@ -30,7 +30,7 @@ function slideInit(res) {
 		html[0] += '<img src="'+res.slides[i].src+'" alt="'+res.slides[i].desc+'"class="banner-img">';
 		html[0] += '<h2 class="banner-cont">'+res.slides[i].desc+'</h2>';
 		html [0]+= '</li>';
-		html[1] += '<div class="pager">●</div>';
+		html[1] += '<div class="pager"data-idx="'+i+'">●</div>';
 	}
 	document.querySelector(".banners").innerHTML=html[0];
 	document.querySelector(".pagers").innerHTML=html[1];//DOM
@@ -45,22 +45,30 @@ function slideInit(res) {
 
 //EVENT
 function startInit(){
-$(".bt-prev").click(function () {
+	document.querySelector(".bt-prev").style.display = "none";
+	document.querySelector(".bt-prev").addEventListener("click",function(){
+(".bt-prev").click(function () {
 	if (now > 0) now--;
 	init()
-}).hide();
-$(".bt-next").click(function () {
+});
+	});
+document.querySelector(".bt-next").addEventListener("click",function(){
 	if (now < 4) now++;
 	init()
 });
-$(".pager").click(function(){
-	now = $(this).index();
-	init()
+document.querySelectorAll(".pager").forEach(function(item,key){
+	//.forEach(function(v,i,a){	value,index,배열
+	item.addEventListener("click",function(e){
+		//																type,listner
+		now = $(this).dataset["idx"];
+		init();
 });
-$(".banners-wrap").mouseover(function(){
+});
+
+document.querySelector(".banners-wrap").addEventListener("mouseover",function(){
 	clearInterval(interval);
 });
-$(".banners-wrap").mouseleave(function(){
+document.querySelector(".banners-wrap").addEventListener("mouseleave",function(){
 	clearInterval(interval);
 	interval = setInterval(intervalCb, 2000);
 });
