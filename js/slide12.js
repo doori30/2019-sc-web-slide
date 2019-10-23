@@ -4,7 +4,7 @@ var interval;
 var speed = 500;
 var delay = 2000;
 var cnt = 0; //Ajax으로 가져온 slide갯수
-var html = "";
+var html = ["",""];
 var ajax = new XMLHttpRequest();
 
 //통신
@@ -26,15 +26,19 @@ function slideInit(res) {
 		// console.log(JSON.stringify(this.responseText));	//JS -> STRING
 	cnt = res.slides.length;
 	for (var i in res.slides) {
-		html = '<li class="banner">';
-		html += '<img src="'+res.slides[i].src+'" alt="'+res.slides[i].desc+'" class="banner-img">';
-		html += '<h2 class="banner-cont">'+res.slides[i].desc+'</h2>';
-		html += '</li>';
-		$(".banners").append(html);
-		html = '<div class="pager">●</div>';
-		$(".pagers").append(html);
+		html[0] += '<li class="banner">';
+		html[0] += '<img src="'+res.slides[i].src+'" alt="'+res.slides[i].desc+'"class="banner-img">';
+		html[0] += '<h2 class="banner-cont">'+res.slides[i].desc+'</h2>';
+		html [0]+= '</li>';
+		html[1] += '<div class="pager">●</div>';
 	}
-	$(".banners").append($(".banner").eq(0).clone());
+	document.querySelector(".banners").innerHTML=html[0];
+	document.querySelector(".pagers").innerHTML=html[1];//DOM
+		//배열																속성(변수)/append(메소드-함수)
+		//innerHTML
+	//document.querySelector(".banners").innerHTML.querySelector(".banner");//배너중에 첫번째
+	//DOM을 사용할 수 있는 appendChild();->문자열은 올수 없다.
+	document.querySelector(".banners").appendChild(document.querySelectorAll(".banner")[0].cloneNode(true));//배너중에 첫번째
 	startInit();
 };
 }
