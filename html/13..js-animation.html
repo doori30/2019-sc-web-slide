@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>순수JS Animation</title>
+	<style>
+		.box {
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;
+			left: 50px;
+			top: 50px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="box"></div>
+
+	<script>
+		//Easing -> 갈놈=갈놈+(목표값-갈놈)*0.5(1보다 작은 수)
+		//setInterval사용
+		//2진값이 포함된 애니메이션
+		var interval;
+		var dist = 1000;
+		var frameDist = 1000 / 50 //700px을 50번에 나눠서 갈 수 있게 (14px씩 이동)
+		var pos = 50;
+		var item = document.querySelector(".box");
+		setInterval(ani, 30);
+
+		function ani() {
+			if (pos < 1000-2) {
+				pos += (dist-pos)*0.05;
+				item.style.left = pos + "px";
+			} else {
+				clearInterval(interval);
+				item.style.left = dist + "px";
+			}
+		}
+	</script>
+</body>
+
+</html>
