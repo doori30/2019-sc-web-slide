@@ -1,0 +1,54 @@
+<script>
+var temp=(function(){
+	function temp(){
+		this.name = "홍길동"
+	}
+	return temp;
+})();
+
+temp1 = new temp();
+temp2 = new temp();
+temp2.name = "둘리";
+console.log(temp1);
+console.log(temp2);
+
+var obj = {
+	name:"홍길동",
+	run: function(){
+		console.log(this.name+"이 달린다.");
+	}
+}
+obj.run();
+var obj2=obj;
+obj2.name = "홍길순";
+obj2.run();
+obj.run();
+
+console.clear();
+
+//리터럴 객체
+var hong = {
+	firstName : "길동",
+	lastName : "홍",
+	fullName : function(){
+		return this.lastName+""+this.firstName;
+	}
+}
+console.log(hong.fullName());
+
+var Hong =(function(){
+	function Hong(){
+		this.firstName = "길동";
+		this.lastName = "홍";
+	}
+	return Hong;
+})();
+//프로토(원래의 형태)를 만들어줌
+Hong.prototype.fullName = function(){
+	return this.lastName + " "+this.firstName;
+}
+
+var hong2 = new Hong();
+console.log(hong2.fullName);
+
+</script>

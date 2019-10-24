@@ -6,15 +6,13 @@ var delay = 2000;
 var cnt = 0; //Ajax으로 가져온 slide갯수
 var html = ["",""];
 var ajax = new XMLHttpRequest();
+var aniEasy = new AniEasy(".banners");
 
 //통신
 //시작 
 ajax.onreadystatechange = slideInit; //CallBack Init
 //XMLHttpRequest값이 변하면 slideInit을 실행
 ajax.open("GET", "../json/slide.json");//동기화(false),비동기화(true)
-$.ajax({url: "../json/slide.json",success:slideInit});
-//		type: "get",//생략가능 기본 get방식
-//		dataType: "json",//생략가능
 ajax.send();
 
 //동작
@@ -58,7 +56,7 @@ document.querySelectorAll(".pager").forEach(function(item,key){
 	//.forEach(function(v,i,a){	value,index,배열
 	item.addEventListener("click",function(e){
 		//																type,listner
-		now = $(this).dataset["idx"];
+		now = this.dataset["idx"];
 		init();
 });
 });
@@ -88,8 +86,8 @@ function init(){
 }
 //애니메이션
 function ani() {
-	var aniEasy = new AniEasy({elem:".banners"});
-	aniEasy.animate({"left":(-720*now)+"px"},500,function(){
+	//var aniEasy = new AniEasy(".banners");
+	aniEasy.animate({"left":(-720*now)+"px"},function(){
 		if(now == 5){
 			now = 0;
 			document.querySelector(".banners").style.left=0;
@@ -115,9 +113,17 @@ function btInit(){
 //페이저 정렬
 function pagerInit(){
 	document.querySelectorAll(".pager").forEach(function(item,key){
-		if(key == now) item.classList.add("sctive");
+		if(key == now) item.classList.add("active");
 		else item.classList.remove("active");//class를 컨트롤
 	});
 	/* $(".pager").removeClass("active");
 	$(".pager").eq(now).addClass("active"); */
 }
+
+//getComputedStyle(dom);
+// var bannersCss = getComputedStyle(document.querySelector(".banners"));
+// //연산되어서 윈도우에 전달.
+// console.log(bannersCss["left"]);//결과0 : 이미지가 아직 로딩되지 않음.
+// setTimeout(function(){
+// 	console.log(bannersCss["left"]);//결과380px: 
+// })
