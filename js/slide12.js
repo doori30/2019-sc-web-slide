@@ -6,7 +6,7 @@ var delay = 2000;
 var cnt = 0; //Ajax으로 가져온 slide갯수
 var html = ["",""];
 var ajax = new XMLHttpRequest();
-var aniEasy = new AniEasy(".banners");
+//var aniEasy = new AniEasy(".banners");
 
 //통신
 //시작 
@@ -87,15 +87,30 @@ function init(){
 //애니메이션
 function ani() {
 	//var aniEasy = new AniEasy(".banners");
-	aniEasy.animate({"left":(-720*now)+"px"},function(){
+	//  aniEasy.animate({"left":(-720*now)+"px"},function(){
+	// 	if(now == 5){
+	// 		now = 0;
+	// 		document.querySelector(".banners").style.left=0;
+	// 	pagerInit();
+	// 	btInit();
+	// 	}
+	// });
+	anime({
+		targets: '.banners',
+		translateX: -720*now,
+		duration: speed,
+		//easing:'cubicBezier(.5, .05, .1, .3)',
+		easing:'easeInOutExpo',
+		updata: function(){
 		if(now == 5){
-			now = 0;
-			document.querySelector(".banners").style.left=0;
-		pagerInit();
-		btInit();
-		}
+					now = 0;
+				document.querySelector(".banners").style.left=0;
+			pagerInit();
+			btInit();
+				 }
+				}
 	});
-		}
+}
 //버튼정렬
 function btInit(){
 	pagerInit();
