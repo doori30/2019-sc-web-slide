@@ -17,7 +17,7 @@ window.addEventListener("wheel", wheelFn,{passive:false});//순수 자바스크�
 	var pageCnt = $(".page").length;//4-1
 
 	if(delta > 0)(n < pageCnt - 1) ? wheelAni((n + 1) * hei):"";
-	else(n > 0) ? wheelAni((n - 1) * hei):"";
+	else(n > 0) ? wheelAni((n - 1) * hei, n, (n-1)):"";
 	// if(delta>0){
 	// 	//아래로 휠을 한 
 	// 	if(n < pageCnt-1)	wheelAni((n+1) * hei);
@@ -26,12 +26,14 @@ window.addEventListener("wheel", wheelFn,{passive:false});//순수 자바스크�
 	// 	//위로 휠을 한 경우
 	// 	if(n > 0)wheelAni((n-1) * hei);
 	// }
-}
+};
 	//console.log(n);//937
-	function wheelAni(pos){
-		console.log(pos);
-		$("html,body").stop().animate({"scrollTop":pos}, 300);
-	};
+	function wheelAni(pos,prevPage,nowPage){
+		console.log(prevPage,nowPage);
+		$("html,body").stop().animate({"scrollTop":pos}, 500,function(){
+
+		});
+	}
 	// if(delta > 0) $("html,body").stop().animate({"scrollTop":hei}, 300);
 	// else $("html, body").stop().animate({"scrollTop":0}, 300);
 	// }
