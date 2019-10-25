@@ -16,7 +16,7 @@ window.addEventListener("wheel", wheelFn,{passive:false});//순수 자바스크�
 	var tar = 0;
 	var pageCnt = $(".page").length;//4-1
 
-	if(delta > 0)(n < pageCnt - 1) ? wheelAni((n + 1) * hei):"";
+	if(delta > 0)(n < pageCnt - 1) ? wheelAni((n + 1) * hei, n, (n+1)):"";
 	else(n > 0) ? wheelAni((n - 1) * hei, n, (n-1)):"";
 	// if(delta>0){
 	// 	//아래로 휠을 한 
