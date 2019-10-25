@@ -15,14 +15,17 @@ window.addEventListener("wheel", wheelFn,{passive:false});//순수 자바스크�
 	var n = Math.floor(posY/hei);//index 값
 	var tar = 0;
 	var pageCnt = $(".page").length;//4-1
-	if(delta>0){
-		//아래로 휠을 한 
-		if(n < pageCnt-1)	wheelAni((n+1) * hei);
-	}
-	else {
-		//위로 휠을 한 경우
-		if(n > 0)wheelAni((n-1) * hei);
-	}
+
+	if(delta > 0)(n < pageCnt - 1) ? wheelAni((n + 1) * hei):"";
+	else(n > 0) ? wheelAni((n - 1) * hei):"";
+	// if(delta>0){
+	// 	//아래로 휠을 한 
+	// 	if(n < pageCnt-1)	wheelAni((n+1) * hei);
+	// }
+	// else {
+	// 	//위로 휠을 한 경우
+	// 	if(n > 0)wheelAni((n-1) * hei);
+	// }
 }
 	//console.log(n);//937
 	function wheelAni(pos){
