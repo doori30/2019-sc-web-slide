@@ -88,7 +88,8 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
                         'loop': 1,
                         'rel': 0,
                         'showinfo': 0,
-                        'modestbranding': 1
+                        'modestbranding': 1,
+                        'pose':1
                     },
                     events: {
                         'onReady': onVideoPlayerReady,
