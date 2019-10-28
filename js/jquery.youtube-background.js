@@ -25,7 +25,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
             function onResize() {
                 var h = $root.outerHeight() + 100; // since showinfo is deprecated and ignored after September 25, 2018. we add +100
                 var w = $root.outerWidth() + 100;
-                var res = 1.77777778;
+                var res = 1.77777778; //화면비율
 
                 if (res > w/h) {
                     $root.find('iframe').width(h*res).height(h);
