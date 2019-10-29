@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>AUDIO를 배워보자</title>
+	<link rel="stylesheet" href="../css/fa.min.css">
+	<link rel="stylesheet" href="../css/animate.css">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/base.css">
+	<link rel="stylesheet" href="../css/audio.css">
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script src="../js/jquery.youtube-background.js"></script>
+	<script src="../js/jquery.cookie.js"></script>
+	<script src="../js/popper.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/imagesloaded.pkgd.min.js"></script>
+	<script src="../js/masonry.pkgd.min.js"></script>
+	<script src="../js/wow.min.js"></script>
+</head>
+
+<body>
+	<!-- <audio controls autoplay muted loop>
+		<source src="../music/music3.mp3" type="audio/mpeg">
+	</audio> -->
+	<audio id="snd">
+		<source src="../music/music3.mp3" type="audio/mpeg">
+	</audio>
+
+	<div class="container">
+		<div class="player-wrap my-3">
+			<div class="snd-ctrls">
+				<i class="fas fa-play-circle" id="bt-play"></i>
+				<i class="fas fa-pause-circle" id="bt-pause" style="display: none;"></i>
+				<i class="fas fa-stop-circle" id="bt-stop"></i>
+				<i class="fas fa-volume-mute" id="bt-muted"></i>
+				<i class="fas fa-volume-up" id="bt-up" style="display: none;"></i>
+				<input type="range" id="volume" min="0" max="1" step="0.1">
+			</div>
+			<div class="snd-chois mt-2">
+				<select id="snd-sel" class="form-control">
+					<option value="../music/music1.mp3">시끄러운 음악</option>
+					<option value="../music/music2.mp3" selected>조용한 음악</option>
+					<option value="../music/music3.mp3">잔잔한 음악</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	<script src="../js/audio.js"></script>
+</body>
+</html>
